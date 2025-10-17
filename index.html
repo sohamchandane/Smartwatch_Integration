@@ -17,7 +17,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            background: #007bff;
+            background: #71f7ba;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -138,8 +138,8 @@
                 xaxis: { title: 'Sample Number' },
                 yaxis: { title: 'Heart Rate (bpm)' },
                 legend: { orientation: 'h', y: 1.15, x: 0.5, xanchor: 'center' },
-                margin: { l: 50, r: 20, t: 60, b: 50 }, // Reduced left/right margin
-            }, { responsive: true });
+                margin: { l: 50, r: 20, t: 60, b: 50 },
+            }, { responsive: true , });
         }
 
         async function connectDevice() {
@@ -152,7 +152,7 @@
                 log(`Connected to: ${device.name}`);
                 const server = await device.gatt.connect();
 
-                // Heart Rate Service
+                //HEart rate sensor UUID
                 const hrService = await server.getPrimaryService('heart_rate');
                 const hrChar = await hrService.getCharacteristic(0x2A37);
 
@@ -175,14 +175,13 @@
         function log(message, isError = false) {
             const line = document.createElement('div');
             line.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
-            line.style.color = isError ? '#f00' : '#0f0';
+            // line.style.color = isError ? '#f00' : '#0f0';
             debug.appendChild(line);
             debug.scrollTop = debug.scrollHeight;
         }
 
         document.getElementById('connect').addEventListener('click', connectDevice);
 
-        // Preload empty graph on page load
         window.addEventListener('load', () => {
             hrValues = [];
             plotGraph();
