@@ -100,15 +100,9 @@ Byte 2+ -> Extra fields (optional, depends on flags)
 
 Bit-level idea for the flags byte:
 
-| Bit Position | Meaning                                                 |
-| bit7         | Reserved or optional field indicator (device dependent) |
-| bit6         | Reserved or optional field indicator (device dependent) |
-| bit5         | Reserved or optional field indicator (device dependent) |
-| bit4         | Reserved or optional field indicator (device dependent) |
-| bit3         | Reserved or optional field indicator (device dependent) |
-| bit2         | Reserved or optional field indicator (device dependent) |
-| bit1         | Reserved or optional field indicator (device dependent) |
-| bit0         | Heart-rate format flag                                  |
+Byte 1 has 8 bits wherein 
+- bit 0 signifies HR format flag
+- rest of the bits are optional field indicators
 
 HR format bit meaning:
 - 0 means heart rate is 8-bit (1 byte)
